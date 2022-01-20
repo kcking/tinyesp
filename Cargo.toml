@@ -1,0 +1,25 @@
+[package]
+name = "tinyesp"
+version = "0.1.0"
+authors = ["Kevin King <4kevinking@gmail.com>"]
+edition = "2018"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+native = ["esp-idf-sys/native"]
+default = ["native"]
+
+[dependencies]
+esp-idf-sys = { version = "0.30", features = ["binstart"] }
+
+
+[build-dependencies]
+embuild = "0.28"
+anyhow = "1"
